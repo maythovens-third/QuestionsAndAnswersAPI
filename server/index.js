@@ -29,6 +29,8 @@ const path = require('path');
 const db = require('../database/db.js')
 const controller = require('./controllers/controller.js');
 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 // app.param('product_id', (req, res, next, product_id) => {
 //   next();
 // });
@@ -36,6 +38,12 @@ const controller = require('./controllers/controller.js');
 // route handler for /questions endpoint with optional questionId parameter
 app.get('/qa/questions/', controller.getQuestions);
 app.get('/qa/questions/:question_id/answers', controller.getAnswers);
+app.post('/qa/questions', controller.addQuestion);
+// app.post('/qa/questions/:question_id/answers', controller.addAnswer);
+// app.put('/qa/questions/:question_id/helpful', controller.markQuestionAsHelpful);
+// app.put('/qa/questions/:question_id/report', controller.reportQuestion);
+// app.put('/qa/answers/:answer_id/helpful', controller.markAnswerAsHelpful);
+// app.put('/qa/answers/:answer_id/report', controller.reportAnswer);
 // app.get('/qa/questions/:question_id/answers' , (req, res) => {
 
 // })
